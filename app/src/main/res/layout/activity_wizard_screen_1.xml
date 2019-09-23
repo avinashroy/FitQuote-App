@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/wizard_screen_1_header"
+        android:background="@color/black"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:gravity="fill_vertical"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ws1_option"
+        style="@style/e_padding"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/cover_option_spnr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/cover_options"
+        style="@style/e_padding"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        style="@style/TextInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/age_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age in Years"
+            android:inputType="number"
+            android:textColor="@color/colorAccent"
+            android:ems="10"
+            android:maxLines="1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include layout="@layout/loading_spinner"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
