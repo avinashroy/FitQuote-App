@@ -1,2 +1,2 @@
 # FitQuote-App
-app for fitquote
+app for fitquote by Avinash
