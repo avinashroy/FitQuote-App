@@ -1,5 +1,9 @@
 package com.voyager.fitquote.steps;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +24,7 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 import com.voyager.fitquote.R;
+import com.voyager.fitquote.common.LoadingDialog;
 import com.voyager.fitquote.task.Step1AsyncTask;
 
 import java.io.IOException;
@@ -45,14 +50,6 @@ public class Step1Fragment extends Fragment implements Step {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_wizard_screen_1, container, false);
 
-//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//        StrictMode.setThreadPolicy(policy);
-        //initialize your UI
-
-        progressSpinner = view.findViewById(R.id.progress_view);
-
-
-
         coverOptionSpinner = (MaterialSpinner) view.findViewById(R.id.cover_option_spnr);
         coverOptionSpinner.setItems(getResources().getStringArray(R.array.cover_options));
         coverOptionSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
@@ -65,8 +62,6 @@ public class Step1Fragment extends Fragment implements Step {
         });
 
         ageTextEdit = (TextInputEditText) view.findViewById(R.id.age_text_edit);
-
-
 
         return view;
     }
@@ -90,16 +85,6 @@ public class Step1Fragment extends Fragment implements Step {
         new Thread(r).start();
     }
 
-
-
-
-    public void showSpinner() {
-        progressSpinner.setVisibility(View.VISIBLE);
-    }
-
-    public void hideSpinner() {
-        progressSpinner.setVisibility(View.GONE);
-    }
 
     @Override
     public VerificationError verifyStep() {

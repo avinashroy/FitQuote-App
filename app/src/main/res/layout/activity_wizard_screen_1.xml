@@ -56,6 +56,4 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <include layout="@layout/loading_spinner"/>
-
 </androidx.appcompat.widget.LinearLayoutCompat>

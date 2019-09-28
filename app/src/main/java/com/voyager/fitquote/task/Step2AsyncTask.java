@@ -21,7 +21,6 @@ public class Step2AsyncTask extends AsyncTask<Step1Fragment, String, String> {
     @Override
     protected String doInBackground(Step1Fragment... params) {
         Step1Fragment step1Fragment = params[0];
-        step1Fragment.showSpinner();
 
         OkHttpClient httpClient = new OkHttpClient();
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -40,7 +39,6 @@ public class Step2AsyncTask extends AsyncTask<Step1Fragment, String, String> {
         try {
             Response response = httpClient.newCall(request).execute();
             JsonObject jobj = new Gson().fromJson(response.body().string(), JsonObject.class);
-            step1Fragment.hideSpinner();
             return jobj.get("applicationReferenceNumber").getAsString();
 
         } catch (IOException e) {

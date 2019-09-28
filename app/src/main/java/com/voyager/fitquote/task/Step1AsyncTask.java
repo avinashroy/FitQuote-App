@@ -1,6 +1,9 @@
 package com.voyager.fitquote.task;
 
+import android.app.Dialog;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -10,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.voyager.fitquote.R;
+import com.voyager.fitquote.common.LoadingDialog;
 import com.voyager.fitquote.steps.Step1Fragment;
 
 import java.io.IOException;
@@ -24,10 +28,16 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Step1AsyncTask extends AsyncTask<Step1Fragment, String, String> {
+    Dialog loadingDialog;
+
     @Override
     protected String doInBackground(Step1Fragment... params) {
         Step1Fragment step1Fragment = params[0];
-//        step1Fragment.showSpinner();
+
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() -> {
+            loadingDialog = LoadingDialog.show(step1Fragment.getContext());
+        });
 
         OkHttpClient httpClient = new OkHttpClient();
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -46,7 +56,7 @@ public class Step1AsyncTask extends AsyncTask<Step1Fragment, String, String> {
         try {
             Response response = httpClient.newCall(request).execute();
             JsonObject jobj = new Gson().fromJson(response.body().string(), JsonObject.class);
-//            step1Fragment.hideSpinner();
+            LoadingDialog.hide(loadingDialog);
             return jobj.get("applicationReferenceNumber").getAsString();
 
         } catch (IOException e) {
