@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/wizard_screen_3_header"
-        android:background="@color/black"
+        android:background="@color/hsbc_red"
         android:textSize="@dimen/header_font_size"
         android:textColor="@color/white"
         android:gravity="fill_vertical"
@@ -108,7 +108,7 @@
         </TableRow>
         <TableRow
             style="@style/priceTableRow"
-            android:background="@color/colorPrimary">
+            android:background="@color/graphite15">
             <TextView
                 style="@style/midTableHeader"
                 android:layout_weight="1"
@@ -126,7 +126,7 @@
                     style="@style/bigButton"
                     android:text="Redeem Promo Code"
                     android:drawableLeft="@drawable/gift_32"
-                    android:background="@color/red" />
+                    android:background="@color/hsbc_red" />
         </TableRow>
         <TableRow>
             <androidx.appcompat.widget.AppCompatButton
